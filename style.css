@@ -53,6 +53,7 @@ body{
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
+    gap: 5px;
 }
 
 #title {
@@ -62,6 +63,7 @@ body{
 #books {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 5px;
 }
 
 .book {
