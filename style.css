@@ -49,3 +49,18 @@ table {
 
 
 /* my css */
+body{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
+#title {
+    font-size: 3rem;
+}
+
+#books {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
