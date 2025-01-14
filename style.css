@@ -89,7 +89,7 @@ body{
     gap: 5px;
     padding: 10px;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(7, 1fr);
     border: 1px solid black;
     background-color: white;
     grid-template-areas: 
@@ -97,7 +97,8 @@ body{
         "author author"
         "pages pages"
         "read notRead"
-        "submit submit";
+        "submit submit"
+        "... close";
     background-color: gray;
     justify-items: center;
 }
@@ -124,4 +125,10 @@ label[for="newNotRead"]{
 
 #submitNewBook{
     grid-area: submit;
+}
+
+#closeModal{
+    grid-area: close;
+    justify-self: end;
+    background-color: red;
 }
