@@ -1,4 +1,6 @@
 let books = document.querySelector('#books')
+let showModal = document.querySelector('#addModal')
+let formModal = document.querySelector('#addBookModal')
 
 const myLibrary = [];
 
@@ -50,3 +52,8 @@ function buildBookCard(book){
 
     books.appendChild(visualBook)
 }
+
+showModal.addEventListener("click", e=>{
+    e.preventDefault()
+    formModal.classList.toggle('hideModal')
+})
