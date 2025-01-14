@@ -36,11 +36,11 @@ function buildBookCard(book){
     visualBook.classList.add('book')
 
     let titleElement = document.createElement('h2')
-    titleElement.textContent = book.title
+    titleElement.textContent = 'Title: ' +book.title
     visualBook.appendChild(titleElement)
 
     let authorElement = document.createElement('p')
-    authorElement.textContent= 'by ' + book.author
+    authorElement.textContent= 'By Author: ' + book.author
     visualBook.appendChild(authorElement)
 
     let pagesElement = document.createElement('p')
@@ -48,7 +48,7 @@ function buildBookCard(book){
     visualBook.appendChild(pagesElement)
 
     let readElement = document.createElement('span')
-    readElement.textContent = 'have ' + book.read
+    readElement.textContent = 'Have ' + book.read
     visualBook.appendChild(readElement)
 
     books.appendChild(visualBook)
