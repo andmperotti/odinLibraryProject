@@ -11,14 +11,14 @@
     <section id="books"></section>
     <button type="button" id="addModal">Add book</button>
 
-    <form action="" id="addBookModal">
+    <form action="" id="addBookModal" class="hideModal">
         <fieldset>
             <legend>Add a Book</legend>
-            <label>Title<input type="text" minlength="3" required name="bookTitle"></label>
-            <label>Author<input type="text" minlength="3" required name="bookAuthor"></label>
-            <label>Number of pages<input type="number" min="1" max="9999" required name="bookPages"></label>
-            <label>Read<input type="radio" value="read" name="bookReadStatus" required></label>
-            <label>Not read<input type="radio" value="not read" name="bookReadStatus"></label>
+            <label for="newTitle">Title<input type="text" minlength="3" required name="bookTitle" id="newTitle"></label>
+            <label for="newAuthor">Author<input type="text" minlength="3" required name="bookAuthor" id="newAuthor"></label>
+            <label for="newPages">Number of pages<input type="number" min="1" max="9999" required name="bookPages" id="newPages"></label>
+            <label for="newRead">Read<input type="radio" value="read" name="bookReadStatus" required id="newRead"></label>
+            <label for="newNotRead">Not read<input type="radio" value="not read" name="bookReadStatus" id="newNotRead"></label>
             <button type="button" id="sumbitNewBook">Submit</button>
         </fieldset>
     </form>
