@@ -2,6 +2,7 @@ let books = document.querySelector('#books')
 let showModal = document.querySelector('#addModal')
 let formModal = document.querySelector('#addBookModal')
 let closeModal = document.querySelector('#closeModal')
+let submitNewBook = document.querySelector('#submitNewBook')
 
 const myLibrary = [];
 
@@ -24,7 +25,6 @@ addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, '
 
 function displayMyLibraryBooks(){
     for(let book of myLibrary){
-        // console.log(book)
         buildBookCard(book)
     }
 }
@@ -62,4 +62,15 @@ showModal.addEventListener("click", e=>{
 closeModal.addEventListener("click", e=>{
     e.preventDefault()
     formModal.classList.toggle('hideModal')
+})
+
+submitNewBook.addEventListener('click', e=>{
+    e.preventDefault()
+    let newBookTitle = document.querySelector('#newTitle').value 
+    let newBookAuthor = document.querySelector('#newAuthor').value 
+    let newBookPages = document.querySelector('#newPages').value 
+    let newBookReadStatus = document.querySelector('#newRead').checked===true ? 'read' : 'not read'
+    let newBook = new Book(newBookAuthor, newBookTitle, newBookPages, newBookReadStatus)
+    addBookToLibrary(newBook)
+    buildBookCard(newBook)
 })
