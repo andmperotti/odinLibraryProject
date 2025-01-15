@@ -5,7 +5,6 @@ let closeModal = document.querySelector('#closeModal')
 let submitNewBook = document.querySelector('#submitNewBook')
 
 const myLibrary = [];
-let totalBooks = 0;
 addBookToLibrary('To Kill a Mockingbird', "Harper Lee", 384, 'read')
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, 'read')
 
@@ -21,7 +20,6 @@ function Book(title, author, pages, read){
 
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read))
-    totalBooks++
 }
 
 
@@ -60,7 +58,10 @@ function buildBookCard(book, index){
     deleteButton.classList.add('deleteButton')
     deleteButton.addEventListener('click', e=>{
         e.preventDefault();
-        /* functionality to remove book from array and books container */
+        /*check this value after deleting randoms */
+        let bookLibraryIndex = e.target.parentElement.getAttribute('data-book-number')
+        myLibrary.splice(bookLibraryIndex, 1)
+        e.target.parentElement.remove()
     })
     visualBook.appendChild(deleteButton)
 
@@ -78,11 +79,10 @@ closeModal.addEventListener("click", e=>{
 })
 
 submitNewBook.addEventListener('click', e=>{
-    e.preventDefault()
     let newBookTitle = document.querySelector('#newTitle').value 
     let newBookAuthor = document.querySelector('#newAuthor').value 
     let newBookPages = document.querySelector('#newPages').value 
     let newBookReadStatus = document.querySelector('#newRead').checked===true ? 'read' : 'not read'
     addBookToLibrary(newBookTitle, newBookAuthor, newBookPages, newBookReadStatus)
-    buildBookCard(myLibrary.slice(-1), totalBooks-1)
+    buildBookCard(myLibrary.slice(-1)[0], myLibrary.length-1)
 })
