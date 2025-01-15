@@ -5,6 +5,9 @@ let closeModal = document.querySelector('#closeModal')
 let submitNewBook = document.querySelector('#submitNewBook')
 
 const myLibrary = [];
+let totalBooks = 0;
+addBookToLibrary('To Kill a Mockingbird', "Harper Lee", 384, 'read')
+addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, 'read')
 
 function Book(title, author, pages, read){
 	this.title = title;
@@ -18,22 +21,23 @@ function Book(title, author, pages, read){
 
 function addBookToLibrary(title, author, pages, read){
     myLibrary.push(new Book(title, author, pages, read))
+    totalBooks++
 }
 
-addBookToLibrary('To Kill a Mockingbird', "Harper Lee", 384, 'read')
-addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, 'read')
 
 function displayMyLibraryBooks(){
-    for(let book of myLibrary){
-        buildBookCard(book)
+    for(let i = 0; i<myLibrary.length; i++){
+        buildBookCard(myLibrary[i], i)
     }
 }
 displayMyLibraryBooks()
 
 
-function buildBookCard(book){
+function buildBookCard(book, index){
     let visualBook = document.createElement('div')
     visualBook.classList.add('book')
+
+    visualBook.setAttribute('data-book-number', index)
 
     let titleElement = document.createElement('h2')
     titleElement.textContent = 'Title: ' +book.title
@@ -51,7 +55,16 @@ function buildBookCard(book){
     readElement.textContent = 'Have ' + book.read
     visualBook.appendChild(readElement)
 
-    books.appendChild(visualBook)
+    let deleteButton = document.createElement('button')
+    deleteButton.textContent = 'delete'
+    deleteButton.classList.add('deleteButton')
+    deleteButton.addEventListener('click', e=>{
+        e.preventDefault();
+        /* functionality to remove book from array and books container */
+    })
+    visualBook.appendChild(deleteButton)
+
+    books.appendChild(visualBook);
 }
 
 showModal.addEventListener("click", e=>{
@@ -70,7 +83,6 @@ submitNewBook.addEventListener('click', e=>{
     let newBookAuthor = document.querySelector('#newAuthor').value 
     let newBookPages = document.querySelector('#newPages').value 
     let newBookReadStatus = document.querySelector('#newRead').checked===true ? 'read' : 'not read'
-    let newBook = new Book(newBookAuthor, newBookTitle, newBookPages, newBookReadStatus)
-    addBookToLibrary(newBook)
-    buildBookCard(newBook)
+    addBookToLibrary(newBookTitle, newBookAuthor, newBookPages, newBookReadStatus)
+    buildBookCard(myLibrary.slice(-1), totalBooks-1)
 })
