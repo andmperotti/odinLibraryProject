@@ -71,7 +71,14 @@ body{
     border-radius: 5px;
     padding: 5px;
     text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
 }
+/*delete button*/
+.deleteButton {
+    justify-self: end
+}
+
 /* modal that allows books to be added*/
 #addBookModal {
     position: fixed;
