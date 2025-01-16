@@ -62,11 +62,24 @@ function buildBookCard(book){
     deleteButton.addEventListener('click', e=>{
         e.preventDefault();
         let uniqueBookIdentifier = e.target.parentElement.getAttribute('data-book-number')
-        let bookPosition = myLibrary.findIndex(book=>book.bookNumber===uniqueBookIdentifier)
+        let bookPosition = myLibrary.findIndex(book=>book.bookNumber===uniqueBookIdentifier)+1
         myLibrary.splice(bookPosition, 1)
         e.target.parentElement.remove()
     })
     visualBook.appendChild(deleteButton)
+
+    let changeReadStatus = document.createElement('button')
+    changeReadStatus.textContent= "Read?"
+    changeReadStatus.addEventListener("click", e=>{
+        e.preventDefault()
+        let uniqueBookIdentifier = e.target.parentElement.getAttribute('data-book-number')
+        let bookPosition = myLibrary.findIndex(book=>book.bookNumber===uniqueBookIdentifier)+1
+        /* change value in object in array */
+
+        /* change visual value */
+
+    })
+    visualBook.appendChild(changeReadStatus)
 
     books.appendChild(visualBook);
 }
