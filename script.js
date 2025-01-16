@@ -53,7 +53,7 @@ function buildBookCard(book){
     visualBook.appendChild(pagesElement)
 
     let readElement = document.createElement('span')
-    readElement.textContent = 'Have ' + book.read
+    readElement.textContent = book.read
     visualBook.appendChild(readElement)
 
     let deleteButton = document.createElement('button')
@@ -61,9 +61,12 @@ function buildBookCard(book){
     deleteButton.classList.add('deleteButton')
     deleteButton.addEventListener('click', e=>{
         e.preventDefault();
+        /* target specific book you pressed delete button on, and find its position in the library array */
         let uniqueBookIdentifier = e.target.parentElement.getAttribute('data-book-number')
         let bookPosition = myLibrary.findIndex(book=>book.bookNumber===uniqueBookIdentifier)+1
+        /* remove book from library array by reassigning a new array using splice to the variable */
         myLibrary.splice(bookPosition, 1)
+        /* remove book card from books container */
         e.target.parentElement.remove()
     })
     visualBook.appendChild(deleteButton)
@@ -74,10 +77,10 @@ function buildBookCard(book){
         e.preventDefault()
         let uniqueBookIdentifier = e.target.parentElement.getAttribute('data-book-number')
         let bookPosition = myLibrary.findIndex(book=>book.bookNumber===uniqueBookIdentifier)+1
-        /* change value in object in array */
-
-        /* change visual value */
-
+        /* change read status on array object */
+        myLibrary[bookPosition].read = myLibrary[bookPosition].read === 'read' ? 'not read' : 'read';
+        /* change read status visually on page */
+        e.target.parentElement.children[3].textContent = myLibrary[bookPosition].read
     })
     visualBook.appendChild(changeReadStatus)
 
