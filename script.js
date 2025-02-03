@@ -6,19 +6,22 @@ let submitNewBook = document.querySelector('#submitNewBook')
 
 const myLibrary = [];
 let bookCount = 0
+
+class Book{
+    constructor(title, author, pages, read, bookCount){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.bookNumber = bookCount
+    }
+    info(){
+        return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
+    }
+}
+
 addBookToLibrary('To Kill a Mockingbird', "Harper Lee", 384, 'read')
 addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J.K. Rowling", 309, 'read')
-
-function Book(title, author, pages, read, bookCount){
-	this.title = title;
-	this.author = author;
-	this.pages = pages;
-	this.read = read;
-	this.info = function(){
-		return `${this.title} by ${this.author}, ${this.pages}, ${this.read}`
-	},
-    this.bookNumber = bookCount
-}
 
 function addBookToLibrary(title, author, pages, read){
     bookCount++
