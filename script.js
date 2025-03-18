@@ -120,7 +120,7 @@ closeModal.addEventListener("click", () => {
 });
 
 submitNewBook.addEventListener("click", () => {
-  //validation restricts submittance until inputs are valid
+  //validation restricts submittance until inputs are valid, ,but inputs are checked when user clicks 'Submit' button
   //if all required input fields are valid, then process entry into application
   if (
     newBookTitle.validity.valid &&

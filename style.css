@@ -139,3 +139,11 @@ label[for="newNotRead"]{
     justify-self: end;
     background-color: red;
 }
+
+input:invalid {
+    border: 1px solid red;
+}
+
+input:valid {
+    border: 2px solid lightgreen;
+}
