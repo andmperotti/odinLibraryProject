@@ -3,6 +3,11 @@ let showModal = document.querySelector("#addModal");
 let formModal = document.querySelector("#addBookModal");
 let closeModal = document.querySelector("#closeModal");
 let submitNewBook = document.querySelector("#submitNewBook");
+let newBookTitle = document.querySelector("#newTitle");
+let newBookAuthor = document.querySelector("#newAuthor");
+let newBookPages = document.querySelector("#newPages");
+let newBookReadStatus =
+  document.querySelector("#newRead").checked === true ? "read" : "not read";
 
 const myLibrary = [];
 let bookCount = 0;
@@ -108,15 +113,14 @@ showModal.addEventListener("click", () => {
 
 closeModal.addEventListener("click", () => {
   formModal.classList.toggle("hideModal");
+  //wipe input fields
+  newBookTitle.value = "";
+  newBookAuthor.value = "";
+  newBookPages.value = "";
 });
 
 submitNewBook.addEventListener("click", () => {
   //validation restricts submittance until inputs are valid
-  let newBookTitle = document.querySelector("#newTitle");
-  let newBookAuthor = document.querySelector("#newAuthor");
-  let newBookPages = document.querySelector("#newPages");
-  let newBookReadStatus =
-    document.querySelector("#newRead").checked === true ? "read" : "not read";
   //if all required input fields are valid, then process entry into application
   if (
     newBookTitle.validity.valid &&
